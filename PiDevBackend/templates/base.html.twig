@@ -33,11 +33,13 @@
   {% endblock %}
 
 </head>
-
-<body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
 {% block body %}
+<body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
+
 
 {# ======= Header ======= #}
+  {% block header %}
+
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
@@ -51,12 +53,11 @@
       {# Nav Menu #}
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="{{ asset('base.html.twig#hero') }}" class="active">Home</a></li>
-          <li><a href="{{ asset('base.html.twig#about') }}">About</a></li>
-          <li><a href="{{ asset('base.html.twig#services') }}">Services</a></li>
-          <li><a href="{{ asset('base.html.twig#portfolio') }}">Portfolio</a></li>
-          <li><a href="{{ asset('base.html.twig#team') }}">Team</a></li>
-          <li><a href="{{ asset('blog.html') }}">Blog</a></li>
+          <li><a href="{{ path('home') }}#about">About</a></li>
+          <li><a href="{{ path('home') }}#hero" class="active">Home</a></li>
+          <li><a href="{{ path('home') }}#services">Services</a></li>
+          <li><a href="{{ path('home') }}#portfolio">Portfolio</a></li>
+          <li><a href="{{ path('home') }}#team">Team</a></li>
           <li class="dropdown has-dropdown"><a href="{{ asset('#') }}"><span>Dropdown</span> <i class="bi bi-chevron-down"></i></a>
             <ul class="dd-box-shadow">
               <li><a href="{{ asset('#') }}">Dropdown 1</a></li>
@@ -74,7 +75,7 @@
               <li><a href="{{ asset('#') }}">Dropdown 4</a></li>
             </ul>
           </li>
-          <li><a href="{{ asset('base.html.twig#contact') }}">Contact</a></li>
+          <li><a href="{{ asset('home') }}#contact">Contact</a></li>
         </ul>
 
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -84,6 +85,9 @@
 
     </div>
   </header>{# End Header #}
+
+  {% endblock %}
+
 
   <main id="main">
 
@@ -945,7 +949,7 @@
               <p class="post-category">Politics</p>
 
               <h2 class="title">
-                <a href="{{ asset('blog-details.html') }}">Dolorum optio tempore voluptas dignissimos</a>
+                <a href="{{ asset('blog-details.html.twig') }}">Dolorum optio tempore voluptas dignissimos</a>
               </h2>
 
               <div class="d-flex align-items-center">
@@ -1114,8 +1118,10 @@
 
   </main>
 
+{% endblock %}
+
   {# ======= Footer ======= #}
-  
+{% block footer %}  
   <footer id="footer" class="footer">
 
     <div class="container footer-top">
@@ -1177,13 +1183,9 @@
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-
-  </footer>{# End Footer #}
-  
-  {# Scroll Top Button #}
-  <a href="{{ asset('#') }}" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  {# Preloader #}
+    {# Scroll Top Button #}
+    <a href="{{ asset('#') }}" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    {# Preloader #}
   <div id="preloader">
     <div></div>
     <div></div>
@@ -1191,6 +1193,11 @@
     <div></div>
   </div>
 
+  </footer>{# End Footer #}
+{% endblock %}  
+  
+
+  
   {% block js %}
   {# Vendor JS Files #}
   <script src="{{ asset('front/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -1206,7 +1213,7 @@
   {% endblock %}
   
 
-{% endblock %}
+
 </body>
 
 </html>
