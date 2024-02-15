@@ -34,7 +34,7 @@ class FichePatientController extends AbstractController
             return $this->redirectToRoute('app_fiche_patient');
         }
 
-        return $this->render('rendez_vous/fichepatient.html.twig', [
+        return $this->render('fichepatient/fichepatient.html.twig', [
             'form' => $form->createView(),
         ]);
     }

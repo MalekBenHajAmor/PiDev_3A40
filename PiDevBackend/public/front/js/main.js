@@ -211,3 +211,43 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('load', aosInit);
 
 });
+// public/js/api.js
+
+// Fetch all users data from the API endpoint
+fetch('/api/users')
+    .then(response => response.json())
+    .then(data => {
+        // Process the fetched data and update the UI accordingly
+        console.log(data);
+        // Example: Update the UI by displaying the fetched users
+        data.forEach(user => {
+            // Assuming you have a div with id "users-list" to display the users
+            document.getElementById('users-list').innerHTML += `
+                <div>
+                    <h3>${user.nom} ${user.prenom}</h3>
+                    <!-- Add additional information as needed -->
+                </div>
+            `;
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching users:', error);
+    });
+
+
+    document.getElementById("search-form").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the default form submission
+      
+      var searchQuery = document.getElementById("search-input").value;
+      
+      fetch("/rendezvous/search?name=" + searchQuery) // Send request to the search endpoint with the search query
+          .then(response => response.json())
+          .then(data => {
+              console.log("Search Results:", data);
+              renderSearchResults(data);
+          })
+          .catch(error => {
+              console.error("Error fetching search results:", error);
+          });
+    });
+    
