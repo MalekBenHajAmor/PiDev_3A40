@@ -1,4 +1,4 @@
-{# rendezvous.html.twig #}
+{# fichepatient.html.twig #}
 
 {% extends 'base.html.twig' %}
 
@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>{% block title %}Appointment{% endblock %}</title>
+  <title>{% block title %}Patient Sheet{% endblock %}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -59,7 +59,7 @@
           <li><a href="{{ path('home') }}#about">About</a></li>
           <li><a href="{{ path('home') }}#hero" >Home</a></li>
           <li><a href="{{ path('home') }}#services">Services</a></li>
-          <li><a href="{{ path('home') }}#portfolio"class="active">Appointment</a></li>
+          <li><a href="{{ path('home') }}#portfolio"class="active">Patient</a></li>
           <li><a href="{{ path('home') }}#team">Team</a></li>
           <li class="dropdown has-dropdown"><a href="{{ asset('#') }}"><span>Dropdown</span> <i class="bi bi-chevron-down"></i></a>
             <ul class="dd-box-shadow">
@@ -88,56 +88,83 @@
 
     </div>
   </header>{# End Header #}
+<main id="main">
+
+    
+    
 
 
-  <main id="main">
 
-    {# Hero Section - Home Page #}
-    <section id="hero" class="hero">
-        <img src="{{ asset('front/img/hero-bg.jpg') }}" alt="" data-aos="fade-in">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10">
-                    <h2 data-aos="fade-up" data-aos-delay="100">Welcome to Our Website</h2>
-                    <p data-aos="fade-up" data-aos-delay="200">We are team of talented designers making websites with Bootstrap</p>
-                </div>
-                <form class="sign-up-form d-flex" data-aos="fade-up" data-aos-delay="300" method="GET" action="{{ path('app_rendez_vous') }}#api_users_search_by_nom">
-                    <input type="text" class="form-control" name="name" placeholder="Enter Doctor Name">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </section>
-<script>
-    function scrollToSearchResults() {
-        // Scroll to the search results section
-        document.getElementById('api_users_search_by_nom').scrollIntoView({ behavior: 'smooth' });
-    }
-</script>
-    <!-- Search results -->
-    <br>
-    <section id="api_users_search_by_nom" class="container">
-        <div class="row justify-content-center">
-            {% for medecin in medecins %}
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ medecin.nom }}</h5>
-                            <p class="card-text">{{ medecin.prenom }}</p>
-                            <p class="card-text">{{ medecin.tel }}</p>
-                            <p class="card-text">ID: {{ medecin.id }}</p>
-                            <a href="#" class="btn btn-primary">Book</a>
-                        </div>
+
+          
+          
+
+          
+  <!-- Form Section -->
+<section id="book-form" class="book-form">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                {{ form_start(form) }}
+                <br> <br>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="weight" class="form-label visually-hidden">Weight</label>
+                        {{ form_row(form.weight, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="muscle_mass" class="form-label visually-hidden">Muscle Mass</label>
+                        {{ form_row(form.muscle_mass, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="height" class="form-label visually-hidden">Height</label>
+                        {{ form_row(form.height, {'attr': {'class': 'form-control'}}) }}
                     </div>
                 </div>
-                
-            {% endfor %}
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="allergies" class="form-label visually-hidden">Allergies</label>
+                        {{ form_row(form.allergies, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="illnesses" class="form-label visually-hidden">Illnesses</label>
+                        {{ form_row(form.illnesses, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="breakfast" class="form-label visually-hidden">Breakfast</label>
+                        {{ form_row(form.breakfast, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="midday" class="form-label visually-hidden">Midday</label>
+                        {{ form_row(form.midday, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="dinner" class="form-label visually-hidden">Dinner</label>
+                        {{ form_row(form.dinner, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="snacks" class="form-label visually-hidden">Snacks</label>
+                        {{ form_row(form.snacks, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="calories" class="form-label visually-hidden">Calories</label>
+                        {{ form_row(form.calories, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <label for="other" class="form-label visually-hidden">Other</label>
+                        {{ form_row(form.other, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm</button>
+                {{ form_end(form) }}
+            </div>
         </div>
-    </section>
-
-</main>
-
-
+    </div>
+</section>
 
 
 
@@ -217,7 +244,3 @@
 
   </footer>{# End Footer #}
 {% endblock footer %}
-{% block javascripts %}
-    <script src="{{ asset('public/front/js/main.js') }}"></script>
-{% endblock %}
-
