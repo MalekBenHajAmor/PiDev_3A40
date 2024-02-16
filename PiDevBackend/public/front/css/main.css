@@ -20,10 +20,10 @@
 /* Global Colors */
 :root {
   --background-color: #ffffff;
-  --background-color-rgb: 255, 255, 255;
+  --background-color-rgb: 189, 187, 176;
   --default-color: #212529;
   --default-color-rgb: 33, 37, 41;
-  --accent-color: #e84545;
+  --accent-color:#7CA8F3;
   --accent-color-rgb: 232, 69, 69;
   --heading-color: #32353a;
   --heading-color-rgb: 50, 53, 58;
@@ -34,9 +34,9 @@
 /* Nav Menu Colors */
 :root {
   --nav-color: #3a3939;
-  --nav-hover-color: #e84545;
+  --nav-hover-color: #7CA8F3;
   --nav-dropdown-color: #3a3939;
-  --nav-dropdown-hover-color: #e84545;
+  --nav-dropdown-hover-color: #7CA8F3;
   --nav-dropdown-background-color: #ffffff;
 }
 
@@ -108,7 +108,7 @@ h6 {
 
 .header .btn-getstarted,
 .header .btn-getstarted:focus {
-  color: var(--contrast-color);
+  color: #353535;
   background: var(--accent-color);
   font-size: 14px;
   padding: 8px 26px;
@@ -120,7 +120,7 @@ h6 {
 .header .btn-getstarted:hover,
 .header .btn-getstarted:focus:hover {
   color: var(--contrast-color);
-  background: rgba(var(--accent-color-rgb), 0.85);
+  background: #353535;
 }
 
 @media (max-width: 1200px) {
@@ -145,7 +145,7 @@ h6 {
   --background-color: #ffffff;
   --heading-color: #444444;
   --nav-color: #444444;
-  --nav-hover-color: #e84545;
+  --nav-hover-color: #444444;
   box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -176,7 +176,7 @@ section {
   --background-color: #ffffff;
   --heading-color: #444444;
   --nav-color: #444444;
-  --nav-hover-color: #d83535;
+  --nav-hover-color:#444444;
 }
 
 /*--------------------------------------------------------------
@@ -719,7 +719,9 @@ section,
 --------------------------------------------------------------*/
 .section-title {
   text-align: center;
-  padding-bottom: 60px;
+  padding-bottom: 60px; /* Ajouter un espacement inférieur pour la section */
+  margin-top: 70px; /* Ajouter un espacement supérieur pour compenser la hauteur de la barre de navigation */
+  position: relative;
 }
 
 .section-title h2 {
@@ -1311,15 +1313,18 @@ section,
 }
 
 .portfolio .portfolio-item .portfolio-info {
-  opacity: 0;
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: -100%;
+  position: absolute; /* Définir la position absolue pour la partie portfolio-info */
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 3;
-  transition: all ease-in-out 0.5s;
+  opacity: 0; /* Masquer la partie portfolio-info par défaut */
+  transition: opacity 0.5s ease; /* Ajouter une transition en douceur pour l'opacité */
   background: rgba(var(--background-color-rgb), 0.9);
   padding: 15px;
+}
+.image-container:hover .portfolio-info {
+  opacity: 1; /* Afficher la partie portfolio-info au survol */
 }
 
 .portfolio .portfolio-item .portfolio-info h4 {
@@ -1335,15 +1340,18 @@ section,
   padding-right: 50px;
 }
 
-.portfolio .portfolio-item .portfolio-info .preview-link,
-.portfolio .portfolio-item .portfolio-info .details-link {
+.portfolio .portfolio-item .portfolio-info .links {
   position: absolute;
-  right: 50px;
+  right: 15px;
+  bottom: 15px;
+  display: flex;
+}
+
+.portfolio .portfolio-item .portfolio-info .links a {
+  margin-right: 10px;
   font-size: 24px;
-  top: calc(50% - 14px);
   color: rgba(var(--default-color-rgb), 0.7);
   transition: 0.3s;
-  line-height: 0;
 }
 
 .portfolio .portfolio-item .portfolio-info .preview-link:hover,
@@ -2057,12 +2065,18 @@ section,
 --------------------------------------------------------------*/
 /* Portfolio-details Section - Portfolio Details Page
 ------------------------------*/
-.portfolio-details .portfolio-details-slider img {
-  width: 100%;
+/*.portfolio-details .portfolio-details-slider  img {
+  width: 50%; 
+}*/
+.portfolio-details-slider img {
+  position: relative;
+  height: 100%; 
+  width: 100%; 
+  
 }
 
 .portfolio-details .swiper-wrapper {
-  height: auto;
+  height:50%;
 }
 
 .portfolio-details .swiper-button-prev,
@@ -2101,16 +2115,16 @@ section,
 .portfolio-details .portfolio-info h3 {
   font-size: 22px;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   padding-bottom: 20px;
   position: relative;
 }
 
 .portfolio-details .portfolio-info h3:after {
   content: "";
-  position: absolute;
+  /*position: absolute;*/
   display: block;
-  width: 50px;
+  width: 220px;
   height: 3px;
   background: var(--accent-color);
   left: 0;
@@ -2889,4 +2903,18 @@ section,
 .blog-details .comments .reply-form .btn-primary:hover {
   color: var(--contrast-color);
   background-color: rgba(var(--accent-color-rgb), 0.8);
+}
+/* Styles pour le conteneur d'image */
+.image-container {
+  position: relative; /* Définir la position relative pour le conteneur */
+  overflow: hidden; /* Assurer que les images ne débordent pas du conteneur */
+  width: 100%;
+  height:300px;
+}
+
+/* Styles pour les images à l'intérieur du conteneur */
+.image-container img {
+  width: 100%; /* Faire en sorte que l'image remplisse entièrement le conteneur */
+  height: 300px; /* Pour conserver le ratio d'aspect de l'image */
+  display: block; /* Pour éviter tout espace supplémentaire sous l'image */
 }

@@ -12,7 +12,7 @@
   {% block css %}
   
   {# Favicons #}
-  <link href= "{{ asset('front/img/favicon.png') }}" rel="icon">
+  <link href= "{{ asset('front/img/logo.png') }}" rel="icon">
   <link href= "{{ asset('front/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   {# Fonts #}
@@ -33,19 +33,17 @@
   {% endblock %}
 
 </head>
-{% block body %}
-<body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
-
-
 {# ======= Header ======= #}
   {% block header %}
 
   <header id="header" class="header fixed-top d-flex align-items-center">
+  
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
       <a href="{{ asset('base.html.twig') }}" class="logo d-flex align-items-center me-auto me-xl-0">
-        {# Uncomment the line below if you also wish to use an image logo #}
-        {# <img src="{{ asset('front/img/logo.png') }}" alt=""> #}
+
+.        {# Uncomment the line below if you also wish to use an image logo #}
+        {# <img src="{{ asset('front/img/favicon.png') }}" alt=""> #}
         <h1>Append</h1>
         <span>.</span>
       </a>
@@ -84,9 +82,15 @@
       <a class="btn-getstarted" href="{{ asset('base.html.twig#about') }}">Get Started</a>
 
     </div>
+      {% endblock %}
   </header>{# End Header #}
+{% block body %}
+<body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
 
-  {% endblock %}
+
+
+
+
 
 
   <main id="main">
@@ -1128,9 +1132,10 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a href="{{ asset('base.html.twig') }}" class="logo d-flex align-items-center">
-            <span>Append</span>
+            <span>Vitalize</span>
+            
           </a>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+          <p>Fuel Your Fire, Achieve Your Desire.</p>
           <div class="social-links d-flex mt-4">
             <a href="{{ asset('#') }}"><i class="bi bi-twitter"></i></a>
             <a href="{{ asset('#') }}"><i class="bi bi-facebook"></i></a>
