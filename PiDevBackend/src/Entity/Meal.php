@@ -30,6 +30,15 @@ class Meal
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+    #[ORM\Column(type: 'integer')]
+    private ?int $nombrePersonnes = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $dureePreparation = null;
+
+    #[ORM\Column(type: 'float')]
+    private ?float $prix = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -82,6 +91,7 @@ class Meal
 
         return $this;
     }
+
     public function getImage(): ?string
     {
         return $this->image;
@@ -93,5 +103,40 @@ class Meal
 
         return $this;
     }
-  
+
+    public function getNombrePersonnes(): ?int
+    {
+        return $this->nombrePersonnes;
+    }
+
+    public function setNombrePersonnes(int $nombrePersonnes): static
+    {
+        $this->nombrePersonnes = $nombrePersonnes;
+
+        return $this;
+    }
+
+    public function getDureePreparation(): ?string
+    {
+        return $this->dureePreparation;
+    }
+
+    public function setDureePreparation(string $dureePreparation): static
+    {
+        $this->dureePreparation = $dureePreparation;
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): static
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
 }

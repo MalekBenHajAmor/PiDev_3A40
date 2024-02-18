@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240214173000 extends AbstractMigration
+final class Version20240216200518 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20240214173000 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE meal ADD image VARCHAR(255) NOT NULL');
+        $this->addSql('CREATE TABLE commande (id INT AUTO_INCREMENT NOT NULL, quantite INT NOT NULL, adresse_client VARCHAR(255) NOT NULL, total_commande DOUBLE PRECISION DEFAULT NULL, methode_paiement VARCHAR(255) NOT NULL, etat_commande VARCHAR(255) DEFAULT NULL, date DATETIME NOT NULL, instruction_speciale LONGTEXT DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci`');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE meal DROP image');
+        $this->addSql('DROP TABLE commande');
     }
 }
