@@ -1,0 +1,22 @@
+{% block form %}
+<div class="info-item" data-aos="fade" data-aos-delay="500">
+    {{ form_start(form, { 'method': 'POST', 'action' : formAction}) }}
+    
+        <div class="col-md-12">
+            {{ form_row(form.message, {
+                'label':false,
+                'attr': {
+                    'class': 'form-control',
+                    'placeholder': 'Description',
+                    'rows': 6,
+                }
+            }) }}
+        </div>
+
+        <div class="col-md-12 text-center">        
+            {{ form_widget(form.submitButton, {'attr': {'class': 'btn custom-btn', 'style': 'background-color: #1F51FF;'}}) }}
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}
+{% endblock %}
